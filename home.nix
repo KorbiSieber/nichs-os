@@ -7,6 +7,11 @@
 
     programs.home-manager.enable = true;
 
+    home.packages = with pkgs; [
+        fastfetch
+    ];
+
+    # Zsh
     programs.zsh = {
         enable = true;
         enableCompletion = true;
@@ -14,13 +19,17 @@
         syntaxHighlighting.enable = true;
 
         oh-my-zsh = {
-        enable = true;
-        theme = "robbyrussell";
-        plugins = [
-            "git"
-            "sudo"
-            "docker"
-        ];
+            enable = true;
+            theme = "robbyrussell";
+            plugins = [
+                "git"
+                "sudo"
+                "docker"
+            ];
         };
+
+        initExtra = ''
+            fastfetch 
+        '';
     };
 }
