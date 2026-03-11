@@ -2,17 +2,24 @@
 
 { config, pkgs, ... }:
 
+let
+  home-manager = builtins.fetchTarball
+    "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+in
+
 {
     # System state version
     system.stateVersion = "25.05";
     imports =
-        [ # Include the results of the hardware scan.
-          ./hardware-configuration.nix
+        [
+            ./hardware-configuration.nix
+            (import "${home-manager}/nixos")
         ];
     
     # Bootloader
     boot.loader.grub.enable = true;
-    boot.loader.grub.useOSProber = true;    
+    boot.loader.grub.useOSProber = true;
+    # boot.loader.grub.device = "/dev/sda";
 
     # HostName
     networking.hostName = "nichsOS";
@@ -55,7 +62,18 @@
     users.users.korbi = {
         isNormalUser = true;
         description = "korbi";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [
+            "networkmanager"
+            "wheel"
+        ];
     };
 
+    # Home Manager
+    home-manager.useGlobalPkgs = true;
+    home-manager.useUserPackages = true;
+
+    home-manager.users.korbi = { pkgs, ... }: {
+        programs.home-manager.enable = true;
+        home.stateVersion = "25.05";
+    };
 }
