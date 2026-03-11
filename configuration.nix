@@ -50,4 +50,12 @@
 
     # Networking
     networking.networkmanager.enable = true;
+
+    # Users
+    users.users.korbi = {
+        isNormalUser = true;
+        description = "korbi";
+        extraGroups = [ "networkmanager" "wheel" ];
+    };
+
 }
