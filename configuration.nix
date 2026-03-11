@@ -14,4 +14,7 @@
 
     # HostName
     networking.hostName = "nichsOS";
+
+    # Timezone
+    time.timeZone = "Europe/Berlin";
 }
