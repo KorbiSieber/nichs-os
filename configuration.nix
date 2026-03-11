@@ -81,6 +81,7 @@ in
         curl
         wget
         firefox
+        jq
     ];
 
     # GNOME
