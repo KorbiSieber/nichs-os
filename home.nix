@@ -38,7 +38,30 @@ in
         };
 
         initExtra = ''
-            fastfetch --logo "/home/korbi/Pictures/logo.jpg" --logo-type "kitty" --logo-width 30 --logo-height 30
+            fastfetch --logo "/home/korbi/Pictures/logo.jpg" --logo-type "kitty" --logo-width 45
+        '';
+    };
+
+    # Kitty
+    programs.kitty = {
+        enable = true;
+        font = {
+            name = "JetBrains Mono";
+            size = 13;
+        };
+        theme = "Adapta Nokto Maia";
+
+        settings = {
+            confirm_os_window_close = 0;
+            cursor_shape = "beam";
+            window_padding_width = 8;
+            enable_audio_bell = false;
+        };
+
+        extraConfig = ''
+            background_opacity 0.92
+            dynamic_background_opacity yes
+            background_blur 16
         '';
     };
 }
