@@ -32,4 +32,15 @@
         LC_TELEPHONE = "de_DE.UTF-8";
         LC_TIME = "de_DE.UTF-8";
     };
+
+    # Audio
+    services.pulseaudio.enable = false;
+    security.rtkit.enable = true;
+    services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+    };
+
 }
