@@ -33,6 +33,8 @@
         LC_TIME = "de_DE.UTF-8";
     };
 
+    console.keyMap = "de";
+
     # Audio
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
