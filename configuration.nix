@@ -5,7 +5,6 @@
 {
     # System state version
     system.stateVersion = "25.05";
-
     imports =
         [ # Include the results of the hardware scan.
           ./hardware-configuration.nix
@@ -23,7 +22,6 @@
 
     # Locale
     i18n.defaultLocale = "en_GB.UTF-8";
-
     i18n.extraLocaleSettings = {
         LC_ADDRESS = "de_DE.UTF-8";
         LC_IDENTIFICATION = "de_DE.UTF-8";
@@ -35,7 +33,6 @@
         LC_TELEPHONE = "de_DE.UTF-8";
         LC_TIME = "de_DE.UTF-8";
     };
-
     console.keyMap = "de";
 
     # Audio
