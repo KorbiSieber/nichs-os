@@ -82,6 +82,7 @@ in
         wget
         firefox
         jq
+        kitty
     ];
 
     # GNOME
