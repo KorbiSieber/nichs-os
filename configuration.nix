@@ -84,6 +84,7 @@ in
         jq
         kitty
         docker-compose
+        uv
     ];
 
     # GNOME
@@ -104,4 +105,7 @@ in
             defaultNetwork.settings.dns_enabled = true;
         };
     };
+
+    # Uv
+    programs.nix-ld.enable = true;
 }
