@@ -76,4 +76,14 @@ in
         programs.home-manager.enable = true;
         home.stateVersion = "25.05";
     };
+
+    # System wide packages
+    environment.systemPackages = with pkgs; [
+        git
+        vim
+        curl
+        wget
+        firefox
+    ];
+
 }
