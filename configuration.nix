@@ -1,27 +1,26 @@
-# Configuration for nix systems
+# /etc/nixos/configuration.nix
 
 { config, pkgs, ... }:
 
 let
   home-manager = builtins.fetchTarball
-    "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+    "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
 in
 
 {
-    # System state version
     system.stateVersion = "25.05";
-    imports =
-        [
-            ./hardware-configuration.nix
-            (import "${home-manager}/nixos")
-        ];
-    
+
+    imports = [
+        ./hardware-configuration.nix
+        (import "${home-manager}/nixos")
+    ];
+
     # Bootloader
     boot.loader.grub.enable = true;
     boot.loader.grub.useOSProber = true;
-    # boot.loader.grub.device = "/dev/sda";
+    boot.loader.grub.device = "/dev/sda";
 
-    # HostName
+    # Hostname
     networking.hostName = "nichsOS";
 
     # Timezone
@@ -62,22 +61,20 @@ in
     users.users.korbi = {
         isNormalUser = true;
         description = "korbi";
-        extraGroups = [
-            "networkmanager"
-            "wheel"
-        ];
+        extraGroups = [ "networkmanager" "wheel" ];
+        shell = pkgs.zsh;
     };
+
+    # Zsh
+    programs.zsh.enable = true;
 
     # Home Manager
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
+    home-manager.backupFileExtension = "backup";
+    home-manager.users.korbi = import /home/korbi/.config/nixpkgs/home.nix;
 
-    home-manager.users.korbi = { pkgs, ... }: {
-        programs.home-manager.enable = true;
-        home.stateVersion = "25.05";
-    };
-
-    # System wide packages
+    # System-wide packages
     environment.systemPackages = with pkgs; [
         git
         vim
@@ -86,4 +83,10 @@ in
         firefox
     ];
 
+    # GNOME
+    services.xserver.enable = true;
+    services.displayManager.gdm.enable = true;
+    services.desktopManager.gnome.enable = true;
+    services.libinput.enable = true;
+    services.xserver.xkb.layout = "de";
 }
