@@ -27,6 +27,10 @@ in
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
 
+        shellAliases = {
+            code = "codium";
+        };
+
         oh-my-zsh = {
             enable = true;
             theme = "robbyrussell";
@@ -63,5 +67,27 @@ in
             dynamic_background_opacity yes
             background_blur 16
         '';
+    };
+
+    # Vscodium
+    programs.vscode = {
+        enable = true;
+        package = pkgs.vscodium;
+
+        profiles.default.extensions = with pkgs.vscode-extensions; [
+            ms-python.python
+            charliermarsh.ruff
+            mhutchie.git-graph
+            waderyan.gitblame
+            ms-toolsai.jupyter
+        ];
+
+        profiles.default.userSettings = {
+            "editor.fontFamily" = "JetBrains Mono";
+            "editor.formatOnSave" = true;
+            "files.autoSave" = "afterDelay";
+            "nix.enableLanguageServer" = true;
+            "nix.serverPath" = "nixd";
+        };
     };
 }

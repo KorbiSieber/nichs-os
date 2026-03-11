@@ -85,6 +85,7 @@ in
         kitty
         docker-compose
         uv
+        vscodium
     ];
 
     # GNOME
