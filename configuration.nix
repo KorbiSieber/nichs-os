@@ -87,6 +87,7 @@ in
         uv
         vscodium
         discord
+        ffmpeg
     ];
 
     # Cinnamon
