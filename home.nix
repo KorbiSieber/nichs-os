@@ -20,8 +20,9 @@ in
     programs.home-manager.enable = true;
 
     home.packages = with pkgs; [
-    fastfetch
-    zsh-powerlevel10k
+        fastfetch
+        zsh-powerlevel10k
+        tor-browser
     ];
 
     # Zsh
