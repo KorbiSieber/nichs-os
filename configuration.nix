@@ -86,6 +86,7 @@ in
         docker-compose
         uv
         vscodium
+        discord
     ];
 
     # Cinnamon
