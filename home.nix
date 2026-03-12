@@ -14,10 +14,14 @@ in
 
     home.file."Pictures/logo.jpg".source = monetLogo;
 
+    # ~/.config/nixpkgs/p10k.zsh
+    home.file.".p10k.zsh".source = /home/korbi/.config/nixpkgs/p10k.zsh;
+
     programs.home-manager.enable = true;
 
     home.packages = with pkgs; [
-        fastfetch
+    fastfetch
+    zsh-powerlevel10k
     ];
 
     # Zsh
@@ -33,7 +37,6 @@ in
 
         oh-my-zsh = {
             enable = true;
-            theme = "robbyrussell";
             plugins = [
                 "git"
                 "sudo"
@@ -42,7 +45,10 @@ in
         };
 
         initExtra = ''
-            fastfetch --logo "/home/korbi/Pictures/logo.jpg" --logo-type "kitty" --logo-width 45
+            source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+            [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+            fastfetch --logo "$HOME/Pictures/logo.jpg" --logo-type kitty --logo-width 45
         '';
     };
 
