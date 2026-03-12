@@ -110,4 +110,10 @@ in
 
     # Uv
     programs.nix-ld.enable = true;
+
+    # Steam
+    programs.steam = {
+        enable = true;
+        protontricks.enable = true;
+    };
 }
