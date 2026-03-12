@@ -40,7 +40,6 @@ in
             plugins = [
                 "git"
                 "sudo"
-                "docker"
             ];
         };
 
