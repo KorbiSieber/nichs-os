@@ -88,6 +88,7 @@ in
         vscodium
         discord
         ffmpeg
+        htop
     ];
 
     # Cinnamon
